@@ -4,8 +4,19 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
 
+function AppTwo() {
+  return (
+    <h1>This is the second app</h1>
+  );
+};
+
 ReactDOM.render(
-  <App />,
+  // This allows us to use both components at root level without
+  // having to add any wrappers into the code! <React.Fragment></React.Fragment> or <></>
+  <>
+    <App />
+    <AppTwo />
+  </>,
   document.getElementById('root'),
 );
 
