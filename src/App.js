@@ -1,19 +1,37 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
-  const [feeling, setFeeling] = useState("nice");
-  console.log(feeling);
+  const [emotion, setEmotion] = useState("nice");
+  const [secondary, setSecondary] = useState("tired");
+
+  // Feels really similar to watchers!
+  useEffect(() => console.log(`It's ${emotion} around here!`), [emotion]);
+  useEffect(() => console.log(`It's ${secondary} right about now!`), [secondary]);
+
   return (
     <>
       <h1>
-        Current state: {feeling}.
+        Current state: {emotion}.
       </h1>
-      <button onClick={() => setFeeling("frustrated")}>
+      <button onClick={() => setEmotion("nice")}>
+        Niiiiice
+      </button>
+      <button onClick={() => setEmotion("frustrated")}>
         Frustrate
       </button>
-      <button onClick={() => setFeeling("happy")}>
+      <button onClick={() => setEmotion("happy")}>
         Make happy
+      </button>
+      <br />
+      <button onClick={() => setSecondary("crabby")}>
+        Crabby
+      </button>
+      <button onClick={() => setSecondary("rested")}>
+        Rested
+      </button>
+      <button onClick={() => setSecondary("tired")}>
+        Tired
       </button>
     </>
   );
