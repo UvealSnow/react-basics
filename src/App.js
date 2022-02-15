@@ -1,26 +1,27 @@
 import './App.css';
 
-function Header() {
+function Header(props) {
+  console.log(props);
   return (
     <header>
-      <h1>Kevin's Kitchen</h1>
+      <h1>{props.name}'s Kitchen</h1>
     </header>
   );
 };
 
-function Main() {
+function Main({ adjective }) {
   return (
     <section>
-      <p>We server the best food in town!</p>
+      <p>We server the most {adjective} food in town!</p>
     </section>
   );
 };
 
-function Footer() {
+function Footer({ year }) {
   return (
     <footer>
       <p>
-        Believe it!
+        Copyright © {year}
       </p>
     </footer>
   );
@@ -29,9 +30,9 @@ function Footer() {
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Main />
-      <Footer />
+      <Header name="Caro" />
+      <Main adjective="amazing" />
+      <Footer year={new Date().getFullYear()} />
     </div>
   );
 };
