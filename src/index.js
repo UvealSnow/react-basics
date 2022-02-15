@@ -8,7 +8,7 @@ ReactDOM.render(
   // This allows us to use both components at root level without
   // having to add any wrappers into the code! <React.Fragment></React.Fragment> or <></>
   <>
-    <App authorized={true} />
+    <App />
   </>,
   document.getElementById('root'),
 );

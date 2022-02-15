@@ -1,35 +1,20 @@
+import { useState } from 'react';
 import './App.css';
 
-function SecretComponent() {
-  return (
-    <h1>
-      Super secret info for authorized users.
-    </h1>
-  );
-};
-
-function RegularComponent() {
-  return (
-    <h1>
-      Everyone can see me!
-    </h1>
-  );
-};
-
-function App({ authorized }) {
-  /**
-    if (authorized) {
-      return <SecretComponent />;
-    } else {
-      return <RegularComponent >/;
-    }
-   */
+function App() {
+  const [feeling, setFeeling] = useState("nice");
+  console.log(feeling);
   return (
     <>
-      { authorized 
-        ? <SecretComponent />
-        : <RegularComponent />
-      }
+      <h1>
+        Current state: {feeling}.
+      </h1>
+      <button onClick={() => setFeeling("frustrated")}>
+        Frustrate
+      </button>
+      <button onClick={() => setFeeling("happy")}>
+        Make happy
+      </button>
     </>
   );
 };
