@@ -10,10 +10,16 @@ function App({ login }) {
     fetch(`https://api.github.com/users/${login}`)
       .then((res) => res.json())
       .then(setData);
-  });
+  }, [login]);
 
   if (data) {
-    return <div>{JSON.stringify(data)}</div>;
+    return (
+      <div>
+        <h1>{data.name}</h1>
+        <p>{data.location}</p>
+        <img alt={data.login} src={data.avatar_url} />
+      </div>
+    );
   } else {
     return <div>No login available</div>;
   }
