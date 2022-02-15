@@ -1,7 +1,6 @@
 import './App.css';
 
 function Header(props) {
-  console.log(props);
   return (
     <header>
       <h1>{props.name}'s Kitchen</h1>
@@ -14,8 +13,8 @@ function Main({ adjective, dishes }) {
     <section>
       <p>We server the most {adjective} food in town!</p>
       <ul style={{ textAlign: 'left' }}>
-        {dishes.map((dish, i) => (
-          <li key={i}>{dish}</li>
+        {dishes.map(({ id, title }) => (
+          <li key={id}>{title}</li>
         ))}
       </ul>
     </section>
@@ -36,13 +35,16 @@ const dishes = [
   "Mac & Cheese",
   "Salmon",
   "Pizza",
+  "Lasagna",
 ];
+
+const dishObjects = dishes.map((dish, i) => ({ id: i, title: dish }));
   
 function App() {
   return (
     <div className="App">
-      <Header name="Caro" />
-      <Main adjective="amazing" dishes={dishes} />
+      <Header name="Kevin" />
+      <Main adjective="amazing" dishes={dishObjects} />
       <Footer year={new Date().getFullYear()} />
     </div>
   );
