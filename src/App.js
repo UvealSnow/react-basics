@@ -1,29 +1,22 @@
-import { useReducer } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 
-function App() {
-  const [checked, toggle] = useReducer(
-    (checked) => !checked,
-    false,
-  );
+// https://api.github.com/users/uvealsnow
 
-  /**
-   * Using closures ans useState:
-    function toggle() {
-      return setChecked(checked => !checked);
-    };
-   */
+function App({ login }) {
+  const [data, setData] = useState(null);
 
-  return (
-    <>
-      <input
-        type="checkbox"
-        value={checked}
-        onChange={toggle}
-      />
-      <p>{ checked ? 'Niiice' : 'Not cool' }</p>
-    </>
-  );
+  useEffect(() => {
+    fetch(`https://api.github.com/users/${login}`)
+      .then((res) => res.json())
+      .then(setData);
+  });
+
+  if (data) {
+    return <div>{JSON.stringify(data)}</div>;
+  } else {
+    return <div>No login available</div>;
+  }
 };
 
 export default App;
