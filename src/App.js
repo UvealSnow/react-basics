@@ -1,38 +1,27 @@
-import { useState, useEffect } from 'react';
+import { useReducer } from 'react';
 import './App.css';
 
 function App() {
-  const [emotion, setEmotion] = useState("nice");
-  const [secondary, setSecondary] = useState("tired");
+  const [checked, toggle] = useReducer(
+    (checked) => !checked,
+    false,
+  );
 
-  // Feels really similar to watchers!
-  useEffect(() => console.log(`It's ${emotion} around here!`), [emotion]);
-  useEffect(() => console.log(`It's ${secondary} right about now!`), [secondary]);
+  /**
+   * Using closures ans useState:
+    function toggle() {
+      return setChecked(checked => !checked);
+    };
+   */
 
   return (
     <>
-      <h1>
-        Current state: {emotion}.
-      </h1>
-      <button onClick={() => setEmotion("nice")}>
-        Niiiiice
-      </button>
-      <button onClick={() => setEmotion("frustrated")}>
-        Frustrate
-      </button>
-      <button onClick={() => setEmotion("happy")}>
-        Make happy
-      </button>
-      <br />
-      <button onClick={() => setSecondary("crabby")}>
-        Crabby
-      </button>
-      <button onClick={() => setSecondary("rested")}>
-        Rested
-      </button>
-      <button onClick={() => setSecondary("tired")}>
-        Tired
-      </button>
+      <input
+        type="checkbox"
+        value={checked}
+        onChange={toggle}
+      />
+      <p>{ checked ? 'Niiice' : 'Not cool' }</p>
     </>
   );
 };
