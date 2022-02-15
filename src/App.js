@@ -1,10 +1,17 @@
 import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import {
+  Home, About, Events, Contact
+} from './pages/pages';
 
-// https://api.github.com/users/uvealsnow
-
-function App({ login }) {
+function App() {
   return (
-    <h1>Hello testing library</h1>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/events" element={<Events />} />
+      <Route path="/contact" element={<Contact />} />
+    </Routes>
   );
 };
 
