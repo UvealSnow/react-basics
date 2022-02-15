@@ -1,4 +1,5 @@
 import './App.css';
+import restaurant from './assets/img/restaurant.jpeg';
 
 function Header(props) {
   return (
@@ -12,6 +13,11 @@ function Main({ adjective, dishes }) {
   return (
     <section>
       <p>We server the most {adjective} food in town!</p>
+      <img
+        height={200}
+        src={restaurant}
+        alt="Delicious foot at the table"
+      />
       <ul style={{ textAlign: 'left' }}>
         {dishes.map(({ id, title }) => (
           <li key={id}>{title}</li>
@@ -38,6 +44,8 @@ const dishes = [
   "Lasagna",
 ];
 
+// It's recommended that we do this so we keep our data in sync as the app
+// state changes over time.
 const dishObjects = dishes.map((dish, i) => ({ id: i, title: dish }));
   
 function App() {
